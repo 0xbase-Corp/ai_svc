@@ -3,7 +3,7 @@ package middlewares
 import (
 	"net/http"
 
-	"github.com/0xbase-Corp/template_svc/shared/errors"
+	"github.com/0xbase-Corp/ai_svc/shared/errors"
 	"github.com/gin-gonic/gin"
 )
 

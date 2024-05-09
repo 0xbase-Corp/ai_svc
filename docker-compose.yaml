@@ -7,16 +7,16 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_HOST: postgres
-      POSTGRES_DB: template
+      POSTGRES_DB: ai
       TZ: America/Toronto
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
-      - XXXX:5432
+      - 5555:5432
     networks:
       - xbase
 
-  template_migrate:
+  ai_migrate:
     build:
       context: .
       target: migrate
@@ -27,15 +27,15 @@ services:
     env_file:
       - app.env
 
-  template_svc:
+  ai_svc:
     build:
       context: .
       target: api
     depends_on:
       - postgres
-      - template_migrate
+      - ai_migrate
     ports:
-      - XXXX:XXXX
+      - 5052:5052
     networks:
       - xbase
     env_file:
@@ -48,4 +48,4 @@ networks:
 volumes:
   db_data:
     driver: local
-    name: xxxx_db_data
+    name: ai_db_data
